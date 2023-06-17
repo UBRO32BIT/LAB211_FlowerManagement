@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  *
  * @author ubro3
  */
-public class Validator {
+public final class Validator {
     /**
      * Validate date on format dd/mm/yyyy using Regular Expression
      * @param strDate
@@ -33,6 +33,11 @@ public class Validator {
             return false;
         }
     }
+    public static boolean validateRegexPattern(String regex, String str) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
     /**
     * Validates a string to check if it represents a positive integer.
     *
@@ -40,15 +45,19 @@ public class Validator {
     * @return True if the string represents a positive integer, false otherwise.
     */
     public static boolean validateNumber(String str) {
-        String regex = "^[1-9]\\d*$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(str);
-        return matcher.matches();
+        return validateRegexPattern("^[1-9]\\d*$", str);
     }
-    public static boolean validateDouble(String str) {
-        String regex = "[0-9]{1,13}(\\\\.[0-9]*)?";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(str);
-        return matcher.matches();
+    public static boolean validatePositiveDouble(String str) {
+        return validateRegexPattern("[0-9]{1,13}(\\\\.[0-9]*)?", str);
+    }
+    
+    public static boolean validateFlowerID(String str) {
+        return validateRegexPattern("^\\d{4}$", str);
+    }
+    public static boolean validateDescription(String str) {
+        return validateRegexPattern("^.{3,50}$", str);
+    }
+    public static boolean validateOrderID(String str) {
+        return validateRegexPattern("^\\d{4}$", str);
     }
 }

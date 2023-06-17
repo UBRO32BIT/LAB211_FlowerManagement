@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
-
-import java.util.HashMap;
-import model.Order;
+package controller;
 
 /**
  *
  * @author ubro3
  */
-public class OrderList extends HashMap<String, Order> {
-    
+public enum SortedOrder {
+    ASCENDING,
+    DESCENDING
 }

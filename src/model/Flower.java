@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author ubro3
  */
-public class Flower {
+public class Flower implements Serializable {
     private String id;
     private String description;
     private LocalDate importDate;
@@ -32,7 +33,7 @@ public class Flower {
     public void setID(String id) {
         this.id = id;
     }
-
+    
     public String getDescription() {
         return description;
     }
@@ -72,6 +73,6 @@ public class Flower {
             return false;
         }
         Flower otherFlower = (Flower) obj;
-        return id.equals(otherFlower.id);
+        return id.equals(otherFlower.id) || description.equals(otherFlower.description);
     }
 }

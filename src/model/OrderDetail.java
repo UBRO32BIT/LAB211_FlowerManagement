@@ -22,10 +22,11 @@ public class OrderDetail implements Serializable {
      * @param flower
      * @param quantity 
      */
-    public OrderDetail(String orderDetailID, String flowerID, int quantity) {
+    public OrderDetail(String orderDetailID, Flower flower, int quantity) {
         this.orderDetailID = orderDetailID;
-        this.flowerID = flowerID;
+        this.flowerID = flower.getID();
         this.quantity = quantity;
+        this.cost = flower.getUnitPrice()*quantity;
     }
 
     public String getOrderDetailID() {
@@ -58,4 +59,5 @@ public class OrderDetail implements Serializable {
     public void setCost(double cost) {
         this.cost = cost;
     }
+    
 }

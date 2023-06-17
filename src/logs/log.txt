@@ -1,0 +1,106 @@
+[2023/06/11 19:43:54] [INFO]: Added successfully!
+[2023/06/11 19:44:17] [INFO]: Added successfully!
+[2023/06/11 19:45:44] [INFO]: Added successfully!
+[2023/06/11 19:45:56] [ERROR]: Failed to add flower!
+[2023/06/11 19:46:36] [INFO]: Added successfully!
+[2023/06/11 19:51:15] [INFO]: Added successfully!
+[2023/06/11 19:51:32] [INFO]: Added successfully!
+[2023/06/11 19:52:17] [INFO]: Added successfully!
+[2023/06/11 19:52:30] [INFO]: Added successfully!
+[2023/06/11 20:19:19] [INFO]: Added successfully!
+[2023/06/11 20:19:34] [INFO]: Added successfully!
+[2023/06/11 20:20:57] [INFO]: Added successfully!
+[2023/06/11 20:21:13] [INFO]: Added successfully!
+[2023/06/11 20:22:20] [INFO]: Added successfully!
+[2023/06/11 20:22:38] [ERROR]: Failed to add flower!
+[2023/06/11 20:22:58] [ERROR]: Failed to add flower!
+[2023/06/11 20:23:24] [INFO]: Added successfully!
+[2023/06/11 20:44:44] [INFO]: Added successfully!
+[2023/06/11 20:45:13] [INFO]: Added successfully!
+[2023/06/11 20:52:25] [INFO]: Added successfully!
+[2023/06/11 20:53:30] [INFO]: Added successfully!
+[2023/06/11 20:55:30] [INFO]: Added successfully!
+[2023/06/11 20:57:41] [INFO]: Added successfully!
+[2023/06/11 20:58:14] [INFO]: Update flower with ID F0001 successfully!
+[2023/06/11 21:08:16] [INFO]: Added successfully!
+[2023/06/11 21:08:35] [INFO]: Update flower with ID F0001 successfully!
+[2023/06/11 21:09:47] [INFO]: Added successfully!
+[2023/06/11 21:10:15] [INFO]: Added successfully!
+[2023/06/11 21:10:37] [ERROR]: Found duplication with flower's description
+[2023/06/11 21:10:37] [INFO]: Update flower with ID F0002 successfully!
+[2023/06/11 21:15:39] [INFO]: Add order successfully!
+[2023/06/11 21:16:18] [ERROR]: Flower with ID F0001 not found!
+[2023/06/12 07:11:43] [INFO]: Added successfully!
+[2023/06/12 07:12:10] [INFO]: Add order successfully!
+[2023/06/12 07:12:30] [INFO]: Add order successfully!
+[2023/06/12 07:13:16] [INFO]: Add order successfully!
+[2023/06/12 07:29:49] [INFO]: Added successfully!
+[2023/06/12 07:35:08] [INFO]: Added successfully!
+[2023/06/12 07:35:21] [ERROR]: Flower not found
+[2023/06/12 12:34:02] [ERROR]: Invalid flower ID (Must be four digit number)!
+[2023/06/12 12:34:02] [INFO]: Added successfully!
+[2023/06/12 12:34:20] [INFO]: Add order successfully!
+[2023/06/12 12:34:59] [INFO]: Add order successfully!
+[2023/06/12 13:12:40] [INFO]: Added successfully!
+[2023/06/12 13:13:13] [INFO]: Added successfully!
+[2023/06/12 13:13:29] [ERROR]: Flower not found
+[2023/06/12 13:15:59] [INFO]: Add order successfully!
+[2023/06/12 13:16:20] [INFO]: Add order successfully!
+[2023/06/12 13:16:42] [INFO]: Add order successfully!
+[2023/06/12 13:24:22] [INFO]: Added successfully!
+[2023/06/12 13:24:50] [INFO]: Added successfully!
+[2023/06/12 13:25:28] [INFO]: Add order successfully!
+[2023/06/12 13:26:04] [INFO]: Add order successfully!
+[2023/06/12 13:26:12] [INFO]: Add order successfully!
+[2023/06/15 07:27:27] [ERROR]: Invalid flower ID (Must be four digit number)!
+[2023/06/15 07:27:27] [INFO]: Added successfully!
+[2023/06/15 07:30:06] [INFO]: Added successfully!
+[2023/06/15 07:30:54] [INFO]: Added successfully!
+[2023/06/15 07:32:10] [INFO]: Add order successfully!
+[2023/06/15 07:32:44] [ERROR]: Flower with ID 001 not found!
+[2023/06/15 07:32:53] [INFO]: Add order successfully!
+[2023/06/15 07:33:02] [INFO]: Add order successfully!
+[2023/06/15 07:33:49] [ERROR]: model.Flower
+[2023/06/15 07:33:49] [INFO]: Save data failed!
+[2023/06/15 07:39:01] [ERROR]: writing aborted; java.io.NotSerializableException: model.Flower
+[2023/06/15 07:39:01] [INFO]: Load data failed!
+[2023/06/15 07:40:21] [INFO]: Added successfully!
+[2023/06/15 07:40:51] [INFO]: Added successfully!
+[2023/06/15 07:41:26] [INFO]: Add order successfully!
+[2023/06/15 07:41:32] [INFO]: Add order successfully!
+[2023/06/15 07:41:43] [INFO]: Add order successfully!
+[2023/06/15 07:42:26] [INFO]: Save data successfully
+[2023/06/15 07:42:31] [INFO]: Save data successfully
+[2023/06/15 08:38:13] [INFO]: Load data successfully!
+[2023/06/17 10:45:52] [INFO]: Added successfully!
+[2023/06/17 10:46:23] [INFO]: Added successfully!
+[2023/06/17 10:46:35] [ERROR]: Flower not found
+[2023/06/17 11:02:53] [INFO]: Load data successfully!
+[2023/06/17 11:03:05] [ERROR]: Flower does not exist!
+[2023/06/17 11:03:05] [INFO]: Delete flower failed!
+[2023/06/17 11:08:50] [INFO]: Load data successfully!
+[2023/06/17 11:09:02] [ERROR]: The flower has already existed in an order detail!
+[2023/06/17 11:09:02] [INFO]: Delete flower failed!
+[2023/06/17 11:26:50] [INFO]: Added successfully!
+[2023/06/17 11:27:21] [ERROR]: Flower not found
+[2023/06/17 11:28:36] [INFO]: Add order successfully!
+[2023/06/17 11:28:52] [INFO]: Add order detail successfully!
+[2023/06/17 11:29:03] [ERROR]: Flower with ID 0004 not found!
+[2023/06/17 11:29:03] [INFO]: Add order detail failed!
+[2023/06/17 11:30:23] [ERROR]: Flower does not exist!
+[2023/06/17 11:30:23] [INFO]: Delete flower failed!
+[2023/06/17 11:30:32] [ERROR]: The flower has already existed in an order detail!
+[2023/06/17 11:30:32] [INFO]: Delete flower failed!
+[2023/06/17 11:31:08] [INFO]: Add order successfully!
+[2023/06/17 11:31:20] [INFO]: Add order detail successfully!
+[2023/06/17 21:00:03] [INFO]: Load data successfully!
+[2023/06/17 21:03:22] [INFO]: Load data successfully!
+[2023/06/17 21:04:47] [INFO]: Add order successfully!
+[2023/06/17 21:05:10] [INFO]: Add order detail successfully!
+[2023/06/17 21:05:21] [ERROR]: The flower with ID 0001 already exist in the order!
+[2023/06/17 21:05:21] [INFO]: Add order detail failed!
+[2023/06/17 21:32:20] [INFO]: Load data successfully!
+[2023/06/17 21:33:35] [INFO]: Add order successfully!
+[2023/06/17 21:33:44] [ERROR]: Flower with ID 0004 not found!
+[2023/06/17 21:33:44] [INFO]: Add order detail failed!
+[2023/06/17 21:33:46] [INFO]: The order with ID 0002 is deleted because there is no order detail in it!

@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author ubro3
  */
-public class Converter {
+public final class Converter {
     /**
     * Converts a string representation of a date on format 'dd/mm/yyyy' to a LocalDate object.
     *
@@ -33,5 +33,10 @@ public class Converter {
     public static String dateToStr(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(formatter);
+    }
+    
+    public static String convertToFixedLengthString(int number, int length) {
+        String format = "%0" + length + "d";
+        return String.format(format, number);
     }
 }

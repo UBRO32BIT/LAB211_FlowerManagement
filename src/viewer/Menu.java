@@ -21,21 +21,31 @@ public class Menu {
     */
     public static int getChoice(Object[] options) {
         String strChoice;
+        boolean isValidChoice = false;
+        int choice = 0;
+        Scanner sc = new Scanner(System.in);
+
         for (int i = 0; i < options.length; i++) {
             System.out.println((i + 1) + ". " + options[i]);
         }
+
         do {
             System.out.print("Your options from 1 - " + options.length + ": ");
-            Scanner sc = new Scanner(System.in);
             strChoice = sc.nextLine();
+
             if (Validator.validateNumber(strChoice)) {
-                int choice = Integer.parseInt(strChoice);
+                choice = Integer.parseInt(strChoice);
                 if (choice >= 1 && choice <= options.length) {
-                    return choice;
+                    isValidChoice = true;
                 }
             }
-            System.out.println("Invalid choice!");
-        } while (true);
+
+            if (!isValidChoice) {
+                System.out.println("Invalid choice!");
+            }
+        } while (!isValidChoice);
+
+        return choice;
     }
     /**
      * Waits for the user to press the "ENTER" key before continuing.
