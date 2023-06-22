@@ -3,16 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer;
+package view;
 
 import java.util.Scanner;
-import tool.Validator;
+import tools.Validator;
 
 /**
- *
+ * Utility class for menu operations and user input handling.
+ * 
  * @author ubro3
  */
-public class Menu {
+public final class Menu {
+    /**
+     * Retrieves the text representations of enum constants.
+     *
+     * @param enumClass The class of the enum.
+     * @param <T>       The enum type.
+     * @return An array of enum constant texts.
+     */
+    public static <T extends Enum<T>> String[] getEnumStringValues(Class<T> enumClass) {
+        T[] enumConstants = enumClass.getEnumConstants();
+        String[] stringValues = new String[enumConstants.length];
+        for (int i = 0; i < enumConstants.length; i++) {
+            stringValues[i] = enumConstants[i].toString();
+        }
+        return stringValues;
+    }
+    
     /**
     * Prompts the user to choose an option from a list and returns the selected choice.
     *

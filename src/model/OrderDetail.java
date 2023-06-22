@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author ubro3
  */
 public class OrderDetail implements Serializable {
+    private static final long serialVersionUID = 10L;
     private String orderDetailID;
     private String flowerID;
     private int quantity;

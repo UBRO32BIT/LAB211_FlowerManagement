@@ -14,6 +14,7 @@ import java.util.HashSet;
  * @author ubro3
  */
 public class Order implements Serializable {
+    private static final long serialVersionUID = 10L;
     private String id;
     private LocalDate orderDate;
     private String customerName;
@@ -66,10 +67,7 @@ public class Order implements Serializable {
     public void addOrderDetail(OrderDetail orderDetail) {
         orderDetails.add(orderDetail);
     }
-
-    public void removeOrderDetail(String orderDetailID) {
-        orderDetails.remove(orderDetailID);
-    }
+    
     public double getTotalPrice() {
         double totalPrice = 0;
         for (OrderDetail od : orderDetails) {
@@ -77,7 +75,7 @@ public class Order implements Serializable {
         }
         return totalPrice;
     }
-    public int getOrderCount() {
+    public int getOrderDetailsCount() {
         return orderDetails.size();
     }
     @Override

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer.forms;
+package view.forms;
 
-import viewer.InputHandler;
+import view.InputHandler;
 
 /**
  * Form for creating order details.
@@ -24,7 +24,7 @@ public class OrderDetailCreationForm extends Form {
      * @param ih The InputHandler object to use for user input.
      */
     public OrderDetailCreationForm(InputHandler ih) {
-        super(ih);
+        super(ih, "ADD ORDER DETAIL");
     }
     
     /**
@@ -53,7 +53,7 @@ public class OrderDetailCreationForm extends Form {
      */
     @Override
     public void takeUserInput() {
-        System.out.println("\n\n---------- ADD ORDER DETAIL ----------");
+        super.printHeader();
         flowerID = ih.inputFlowerID();
         quantity = ih.inputQuantity();
     }

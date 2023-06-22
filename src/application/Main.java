@@ -5,35 +5,66 @@
  */
 package application;
 
-import java.util.Scanner;
 import controller.FlowerManagement;
-import viewer.InputHandler;
-import viewer.Menu;
-import viewer.forms.FlowerCreationForm;
-import viewer.forms.FlowerUpdateForm;
-import viewer.forms.OrderCreationForm;
-import viewer.forms.OrderDetailCreationForm;
+import view.InputHandler;
+import view.Menu;
+import view.forms.FlowerCreationForm;
+import view.forms.FlowerUpdateForm;
+import view.forms.OrderCreationForm;
+import view.forms.OrderDetailCreationForm;
 
 /**
- * Flower Management Program
+ * Flower Management Program - SE173255
  *
  * @author ubro3
  */
 public class Main {
+    private enum MenuOption {
+        ADD_FLOWER,
+        FIND_FLOWER,
+        UPDATE_FLOWER,
+        DELETE_FLOWER,
+        ADD_ORDER,
+        DISPLAY_ORDERS,
+        SORT_ORDERS,
+        SAVE_DATA,
+        LOAD_DATA,
+        QUIT;
+        
+        @Override
+        public String toString() {
+        switch (this) {
+        case ADD_FLOWER:
+            return "Add a flower";
+        case FIND_FLOWER:
+            return "Find flower";
+        case UPDATE_FLOWER:
+            return "Update a flower";
+        case DELETE_FLOWER:
+            return "Delete a flower";
+        case ADD_ORDER:
+            return "Add an order";
+        case DISPLAY_ORDERS:
+            return "Display orders";
+        case SORT_ORDERS:
+            return "Sort orders";
+        case SAVE_DATA:
+            return "Save data";
+        case LOAD_DATA:
+            return "Load data";
+        case QUIT:
+            return "Quit";
+        default:
+            return null;
+    }
+}
+    }
     /**
      * The main method that starts the Flower Management Program.
      * 
      * @param args The command line arguments.
-     * @throws Exception If an error occurs while running the program.
      */
-    public static void main(String[] args) throws Exception {
-        // Menu options
-        String[] mainOptions = {"Add a flower",
-            "Find a flower", "Update a flower",
-            "Delete a flower", "Add an order",
-            "Display orders", "Sort orders",
-            "Save data", "Load data", "Quit",
-        };
+    public static void main(String[] args) {
         InputHandler ih = new InputHandler();
         int choice = 0;
         final String fileFlower = "src\\saves\\flowers.dat";
@@ -43,64 +74,74 @@ public class Main {
         boolean isExited = false;
         do {
             System.out.println("\nFlower Management Program");
-            choice = Menu.getChoice(mainOptions); // show Menu options
-            Scanner sc = new Scanner(System.in);
+            choice = Menu.getChoice(Menu.getEnumStringValues(MenuOption.class)); // show Menu options
             // Switch through main menu choices
-            switch (choice) {
-                case 1:
+            switch (MenuOption.values()[choice - 1]) {
+                case ADD_FLOWER:
+                    //Create form object to create flower
                     FlowerCreationForm flowerCreationForm = new FlowerCreationForm(ih);
                     do {
+                        //Display the form for inputting
                         flowerCreationForm.takeUserInput();
                         fm.addFlower(flowerCreationForm);
                     } while (ih.inputAddFlowerConfirmation());
                     break;
-                case 2:
-                    fm.findFlower(ih.inputDescription());
+                case FIND_FLOWER:
+                    fm.findFlower(ih.inputFlowerSearchingString());
                     break;
-                case 3:
-                    String editFlowerID = ih.inputFlowerID();
+                case UPDATE_FLOWER:
+                    String description = ih.inputDescription();
                     FlowerUpdateForm flowerUpdateForm = new FlowerUpdateForm(ih);
-                    fm.updateFlower(editFlowerID, flowerUpdateForm);
+                    fm.updateFlower(description, flowerUpdateForm);
                     break;
-                case 4:
+                case DELETE_FLOWER:
                     String deleteFlowerID = ih.inputFlowerID();
                     if (ih.inputDeleteFlowerConfirmation(deleteFlowerID)) {
                         fm.deleteFlower(deleteFlowerID);
                     }
                     break;
-                case 5:
+                case ADD_ORDER:
                     OrderCreationForm orderForm = new OrderCreationForm(ih);
                     OrderDetailCreationForm orderDetailForm = new OrderDetailCreationForm(ih);
+                    //Loop to show order input and add orders
                     do {
                         orderForm.takeUserInput();
                         String orderID = orderForm.getId();
-                        fm.addOrder(orderForm);
-                        do {
-                            orderDetailForm.takeUserInput();
-                            fm.addOrderDetail(orderID, orderDetailForm);
-                        } while (ih.inputAddOrderDetailConfirmation());
-                        fm.deleteOrderIfEmpty(orderID);
+                        boolean result = fm.addOrder(orderForm);
+                        //If the order is created successfully, add order details
+                        if (result) {
+                            do {
+                                orderDetailForm.takeUserInput();
+                                fm.addOrderDetail(orderID, orderDetailForm);
+                            } while (ih.inputAddOrderDetailConfirmation());
+                            //Delete order if it has no OrderDetails to ensure data integrity
+                            fm.deleteOrderIfEmpty(orderID);
+                        }
                     } while (ih.inputAddOrderConfirmation());
                     break;
-                case 6:
+                case DISPLAY_ORDERS:
                     fm.displayOrders(ih.inputStartDate(), ih.inputEndDate());
                     break;
-                case 7:
+                case SORT_ORDERS:
                     fm.sortOrders(ih.inputSortedField(), ih.inputSortOrder());
                     break;
-                case 8:
+                case SAVE_DATA:
                     fm.saveData();
                     break;
-                case 9:
+                case LOAD_DATA:
                     fm.loadData();
                     break;
-                case 10:
+                case QUIT:
                     if (ih.inputExitConfirmation()) {
                         isExited = true;
                     }
             }
-            Menu.waitForEnterKey();
+            //If the user choose quit, no need to wait for press Enter key
+            if (!isExited) {
+                Menu.waitForEnterKey();
+            }
         } while (!isExited);
+        //Save data before exiting the program
         fm.saveData();
         System.out.println("Goodbye!");
         System.exit(0);

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer.forms;
+package view.forms;
 
-import viewer.InputHandler;
+import view.InputHandler;
 /**
  * The base class for all forms.
  * Provides a common structure and functionality for form classes.
@@ -16,14 +16,26 @@ import viewer.InputHandler;
  */
 public abstract class Form {
     protected final InputHandler ih;
+    protected final String header;
     /**
-     * Constructs a new Form object with the specified InputHandler.
+     * Constructor with the specified InputHandler.
      * 
      * @param ih The InputHandler object to use for user input.
+     * @param header The header of the form
      */
-    public Form(InputHandler ih) {
+    public Form(InputHandler ih, String header) {
         this.ih = ih;
+        this.header = header;
     }
+    /**
+    * Prints the header for the form.
+    * The header is a formatted string displayed at the beginning of the form.
+    * It helps visually separate different forms or sections of the program.
+    */
+    protected void printHeader() {
+        System.out.println("\n" + "---------- " + header + " ----------");
+    }
+    
     /**
      * Takes user input for the form.
      * Subclasses should implement this method to collect user input for all attributes.

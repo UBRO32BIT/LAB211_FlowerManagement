@@ -3,10 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer;
+package view;
 
 /**
- *
+ * The PromptType enum represents different prompts for user input in the flower management system.
+ * Each prompt corresponds to a specific data field or action that requires user input.
+ * 
+ * The enum provides a list of prompt values that can be used to display instructions to the user.
+ * Each prompt value is associated with a descriptive message that indicates what information is expected.
+ * 
  * @author ubro3
  */
 public enum PromptType {
@@ -20,6 +25,7 @@ public enum PromptType {
     ORDER_DATE("Enter Order Date (dd/MM/yyyy): "),
     CUSTOMER_NAME("Enter Customer Name: "),
     QUANTITY("Enter Quantity: "),
+    FIND_FLOWER("Enter Flower's ID or name to find (\"@all\" to show all flowers): "),
     START_DATE("Enter start date (yyyy-MM-dd): "),
     END_DATE("Enter end date (yyyy-MM-dd): "),
     SORT_ORDER("Enter sort order"),

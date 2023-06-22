@@ -13,6 +13,7 @@ import java.time.LocalDate;
  * @author ubro3
  */
 public class Flower implements Serializable {
+    private static final long serialVersionUID = 10L;
     private String id;
     private String description;
     private LocalDate importDate;
@@ -65,10 +66,15 @@ public class Flower implements Serializable {
     }
     @Override
     public int hashCode() {
-        return id.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }

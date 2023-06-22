@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer;
+package view;
 
 import java.time.LocalDate;
 import java.util.Scanner;
-import tool.Converter;
-import tool.Validator;
+import tools.Converter;
+import tools.Validator;
 
 /**
- *
+ * Utility class for handling user input.
+ * Provides methods for inputting different types of fields.
+ * 
  * @author ubro3
  */
 public class InputUtils {
@@ -39,7 +41,7 @@ public class InputUtils {
         } while (!isValid);
         return value;
     }
-
+    
     /**
      * Handles user input for a date field.
      *
@@ -92,7 +94,12 @@ public class InputUtils {
 
         return value;
     }
-
+    /**
+     * Handles user input for a positive double field.
+     *
+     * @param prompt The prompt message for the field.
+     * @return The entered double value.
+     */
     public double inputPositiveDoubleField(String prompt) {
         double value = -1;
         boolean isValidInput = false;

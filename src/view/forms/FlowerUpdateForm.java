@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer.forms;
+package view.forms;
 
 import java.time.LocalDate;
-import viewer.InputHandler;
-import viewer.Menu;
+import view.InputHandler;
+import view.Menu;
 
 /**
  * Form for updating an existing flower.
@@ -36,7 +36,7 @@ public class FlowerUpdateForm extends Form {
      * @param ih The InputHandler object to use for user input.
      */
     public FlowerUpdateForm(InputHandler ih) {
-        super(ih);
+        super(ih, "Update Flower");
         unitPrice = -1;
     }
 
@@ -93,6 +93,7 @@ public class FlowerUpdateForm extends Form {
         };
         int choice;
         do {
+            super.printHeader();
             choice = Menu.getChoice(editOptions);
             switch (choice) {
                 case 1:

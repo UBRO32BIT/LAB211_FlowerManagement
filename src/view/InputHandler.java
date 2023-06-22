@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer;
+package view;
 
-import controller.SortedField;
-import controller.SortedOrder;
+import enums.SortedField;
+import enums.SortedOrder;
 import java.time.LocalDate;
 import java.util.Scanner;
-import tool.Validator;
+import tools.Validator;
 
 /**
+ * Responsible for handling user input in the flower management system.
+ * The class provides methods for inputting various data fields related to flowers and orders, and validates
+ * the input based on specific criteria. This class utilizes the InputUtils class for input operations
+ * and the PromptType enum for displaying prompts to the user.
  *
  * @author ubro3
  */
@@ -19,8 +23,8 @@ public class InputHandler {
     private final Scanner sc;
     private final InputUtils inputUtils;
     private final String[] YNOptions = {
-            "Yes", "No"
-        };
+        "Yes", "No"
+    };
 
     public InputHandler() {
         sc = new Scanner(System.in);
@@ -39,11 +43,10 @@ public class InputHandler {
             result = inputUtils.inputStringField(PromptType.FLOWER_ID.getPrompt());
             isValid = Validator.validateFlowerID(result);
             if (!isValid) {
-                System.out.println("Invalid flower ID (Must be four digit number)!");
+                System.out.println("Invalid flower ID (Must be a four-digit number)!");
             }
-        }
-        while (!isValid);
-        
+        } while (!isValid);
+
         return result;
     }
 
@@ -70,8 +73,7 @@ public class InputHandler {
             if (!isValid) {
                 System.out.println("Invalid description (Must be from 3-50 characters)");
             }
-        }
-        while (!isValid);
+        } while (!isValid);
         return result;
     }
 
@@ -114,10 +116,9 @@ public class InputHandler {
             result = inputUtils.inputStringField(PromptType.ORDER_ID.getPrompt());
             isValid = Validator.validateOrderID(result);
             if (!isValid) {
-                System.out.println("Invalid order ID (Must be a four digit number)!");
+                System.out.println("Invalid order ID (Must be a four-digit number)!");
             }
-        }
-        while (!isValid);
+        } while (!isValid);
         return result;
     }
 
@@ -149,6 +150,15 @@ public class InputHandler {
     }
 
     /**
+     * Handles user input for the flower searching string.
+     *
+     * @return The entered flower searching string as a string.
+     */
+    public String inputFlowerSearchingString() {
+        return inputUtils.inputStringField(PromptType.FIND_FLOWER.getPrompt());
+    }
+
+    /**
      * Handles user input for the start date.
      *
      * @return The entered start date as a LocalDate.
@@ -165,23 +175,40 @@ public class InputHandler {
     public LocalDate inputEndDate() {
         return inputUtils.inputDateField(PromptType.END_DATE.getPrompt());
     }
+
+    /**
+     * Handles user input for the sort order.
+     *
+     * @return The selected sort order.
+     */
     public SortedOrder inputSortOrder() {
-        SortedOrder[] sortedOrders = SortedOrder.values();
         System.out.println(PromptType.SORT_ORDER.getPrompt());
-        int choice = Menu.getChoice(sortedOrders);
-        return sortedOrders[choice - 1];
+        int choice = Menu.getChoice(Menu.getEnumStringValues(SortedOrder.class));
+        return SortedOrder.values()[choice - 1];
     }
+
+    /**
+     * Handles user input for the sorted field.
+     *
+     * @return The selected sorted field.
+     */
     public SortedField inputSortedField() {
-        SortedField[] sortedFields = SortedField.values();
         System.out.println(PromptType.SORT_FIELD.getPrompt());
-        int choice = Menu.getChoice(sortedFields);
-        return sortedFields[choice - 1];
+        int choice = Menu.getChoice(Menu.getEnumStringValues(SortedField.class));
+        return SortedField.values()[choice - 1];
     }
+
+    /**
+     * Handles user input for confirming the addition of a flower.
+     *
+     * @return True if the user confirms the addition, false otherwise.
+     */
     public boolean inputAddFlowerConfirmation() {
         System.out.println(PromptType.CONTINUE_ADDING_FLOWER.getPrompt());
         int choice = Menu.getChoice(YNOptions);
         return (choice == 1);
     }
+
     /**
      * Handles user input for confirming the deletion of a flower.
      *
@@ -189,20 +216,38 @@ public class InputHandler {
      * @return True if the user confirms the deletion, false otherwise.
      */
     public boolean inputDeleteFlowerConfirmation(String flowerID) {
-        System.out.println("Are you sure you want to delete flower with ID " + flowerID + "?");
+        System.out.println("Are you sure you want to delete the flower with ID " + flowerID + "?");
         int choice = Menu.getChoice(YNOptions);
         return (choice == 1);
     }
+
+    /**
+     * Handles user input for confirming the addition of an order detail.
+     *
+     * @return True if the user confirms the addition, false otherwise.
+     */
     public boolean inputAddOrderDetailConfirmation() {
         System.out.println(PromptType.CONTINUE_ADDING_ORDER_DETAIL.getPrompt());
         int choice = Menu.getChoice(YNOptions);
         return (choice == 1);
     }
+
+    /**
+     * Handles user input for confirming the addition of an order.
+     *
+     * @return True if the user confirms the addition, false otherwise.
+     */
     public boolean inputAddOrderConfirmation() {
         System.out.println(PromptType.CONTINUE_ADDING_ORDER.getPrompt());
         int choice = Menu.getChoice(YNOptions);
         return (choice == 1);
     }
+
+    /**
+     * Handles user input for confirming the exit of the program.
+     *
+     * @return True if the user confirms the exit, false otherwise.
+     */
     public boolean inputExitConfirmation() {
         System.out.println(PromptType.QUIT_PROGRAM.getPrompt());
         int choice = Menu.getChoice(YNOptions);

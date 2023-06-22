@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer.forms;
+package view.forms;
 
 import java.time.LocalDate;
-import viewer.InputHandler;
+import view.InputHandler;
 
 /**
  * Form for creating a new flower.
@@ -28,7 +28,7 @@ public class FlowerCreationForm extends Form {
      * @param ih The InputHandler object to use for user input.
      */
     public FlowerCreationForm(InputHandler ih) {
-        super(ih);
+        super(ih, "Create Flower");
     }
     
     /**
@@ -83,6 +83,7 @@ public class FlowerCreationForm extends Form {
      */
     @Override
     public void takeUserInput() {
+        super.printHeader();
         flowerID = ih.inputFlowerID();
         description = ih.inputDescription();
         importDate = ih.inputImportDate();

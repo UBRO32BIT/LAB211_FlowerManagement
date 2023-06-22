@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package viewer.forms;
+package view.forms;
 
 import java.time.LocalDate;
-import viewer.InputHandler;
+import view.InputHandler;
 
 /**
  * Form for creating a new order.
@@ -29,7 +29,7 @@ public class OrderCreationForm extends Form {
      * @param ih The InputHandler object to use for user input.
      */
     public OrderCreationForm(InputHandler ih) {
-        super(ih);
+        super(ih, "ADD ORDER");
     }
     
     /**
@@ -67,7 +67,7 @@ public class OrderCreationForm extends Form {
      */
     @Override
     public void takeUserInput() {
-        System.out.println("\n\n---------- ADD ORDER ----------");
+        super.printHeader();
         id = ih.inputOrderID();
         orderDate = ih.inputOrderDate();
         customerName = ih.inputCustomerName();

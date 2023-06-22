@@ -1,6 +1,6 @@
 package controller;
-import model.OrderList;
-import model.FlowerList;
+import model.OrderSet;
+import model.FlowerSet;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,35 +11,41 @@ import model.Flower;
 import model.Order;
 /**
  * Class to manage file I/O operations.
- * This class provides methods for reading and writing nurse and flower data to files,
- as well as writing log files.
+ * This class provides methods for reading and writing flowers and orders data to files using high-level I/O stream
  * 
  * @author ubro3
  */
 public class FileHandler {
     private final String flowersPath;
     private final String ordersPath;
+    
+    /**
+     * Constructor for FileHandler.
+     * 
+     * @param flowersPath The path of the flower data file.
+     * @param ordersPath The path of the order data file.
+     */
     public FileHandler(String flowersPath, String ordersPath) {
         this.flowersPath = flowersPath;
         this.ordersPath = ordersPath;
     }
+    
     /**
-     * Reads nurse data from a file and returns a NurseList object.
+     * Reads order data from a file and returns an OrderSet object.
      *
-     * @param fileName The name of the file to read nurse data from.
-     * @return The NurseList object containing the read nurse data.
+     * @return The OrderSet object containing the read order data.
      * @throws IOException if there is an error reading the file.
-     * @throws ClassNotFoundException if the Nurse class is not found during de-serialization.
+     * @throws ClassNotFoundException if the Order class is not found during deserialization.
      */
-    public OrderList readOrder() throws IOException, ClassNotFoundException {
+    public OrderSet readOrder() throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(ordersPath);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        OrderList orders = new OrderList();
+        OrderSet orders = new OrderSet();
         Order order;
         try {
-            // Loop to read single object in the file
+            // Loop to read a single object from the file
             while ((order = (Order) ois.readObject()) != null) {
-                orders.put(order.getOrderID(), order);
+                orders.add(order);
             }
         } catch (EOFException e) {
             // Reached the end of the file, no need to do anything
@@ -51,19 +57,19 @@ public class FileHandler {
     }
     
     /**
-     * Reads flower data from a file and returns a PatientList object.
+     * Reads flower data from a file and returns a FlowerSet object.
      *
-     * @param fileName The name of the file to read flower data from.
-     * @return The PatientList object containing the read flower data.
+     * @return The FlowerSet object containing the read flower data.
      * @throws IOException if there is an error reading the file.
-     * @throws ClassNotFoundException if the Patient class is not found during de-serialization.
+     * @throws ClassNotFoundException if the Flower class is not found during deserialization.
      */
-    public FlowerList readFlower() throws IOException, ClassNotFoundException {
+    public FlowerSet readFlower() throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(flowersPath);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        FlowerList flowers = new FlowerList();
+        FlowerSet flowers = new FlowerSet();
         Flower flower;
         try {
+            // Loop to read a single object from the file
             while ((flower = (Flower) ois.readObject()) != null) {
                 flowers.add(flower);
             }
@@ -77,16 +83,15 @@ public class FileHandler {
     }
     
     /**
-     * Writes nurse data to a file.
+     * Writes order data to a file.
      *
-     * @param orders   The OrderList object containing the order data to write.
-     * @param filePath The path of the file to write the nurse data to.
+     * @param orders The OrderSet object containing the order data to write.
      * @throws IOException if there is an error writing the file.
      */
-    public void writeOrderFile(OrderList orders) throws IOException {
+    public void writeOrderFile(OrderSet orders) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(ordersPath);
                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            for (Order order : orders.values()) {
+            for (Order order : orders) {
                 oos.writeObject(order);
             }
         }
@@ -95,11 +100,10 @@ public class FileHandler {
     /**
      * Writes flower data to a file.
      *
-     * @param patients The PatientList object containing the flower data to write.
-     * @param filePath The path of the file to write the flower data to.
+     * @param flowers The FlowerSet object containing the flower data to write.
      * @throws IOException if there is an error writing the file.
      */
-    public void writeFlowerFile(FlowerList flowers) throws IOException {
+    public void writeFlowerFile(FlowerSet flowers) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(flowersPath);
                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             for (Flower flower : flowers) {
