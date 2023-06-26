@@ -267,3 +267,4 @@
 [2023/06/22 12:30:45] [ERROR]: The flower does not exist!
 [2023/06/22 12:30:45] [INFO]: Update flower failed
 [2023/06/22 12:31:50] [INFO]: Update flower successfully!
+[2023/06/26 07:46:22] [INFO]: Load data successfully!

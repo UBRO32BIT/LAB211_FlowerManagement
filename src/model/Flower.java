@@ -19,6 +19,7 @@ public class Flower implements Serializable {
     private LocalDate importDate;
     private double unitPrice;
     private String category;
+    //Constructor
     public Flower(String id, String description, LocalDate importDate, double unitPrice, String category) {
         this.id = id;
         this.description = description;
@@ -26,7 +27,7 @@ public class Flower implements Serializable {
         this.unitPrice = unitPrice;
         this.category = category;
     }
-    
+    //Getter and setter methods
     public String getID() {
         return id;
     }

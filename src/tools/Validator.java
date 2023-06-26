@@ -17,11 +17,18 @@ import java.util.regex.Pattern;
  * positive doubles, flower IDs, descriptions, and order IDs.
  * 
  * Note: This class is intended to be used as a utility class and should not be instantiated.
- * All methods in this class are static.
+ * All methods in this class are static
+ * .
  *
  * @author ubro3
  */
 public final class Validator {
+    private static final String DATE_FORMAT = "dd/mm/yyyy";
+    private static final String REGEX_DIGIT = "^[1-9]\\d*$";
+    private static final String REGEX_POSITIVE_DECIMAL = "[0-9]{1,13}(\\\\.[0-9]*)?";
+    private static final String REGEX_ID = "^\\d{4}$";
+    private static final String REGEX_DESCRIPTION = "^.{3,50}$";
+    
     /**
      * Validate date in the format dd/mm/yyyy using Regular Expression.
      * 
@@ -31,7 +38,7 @@ public final class Validator {
     public static boolean dateValidate(String strDate) {
         try {
             // Create a formatter for the desired format
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT); 
             // Parse the string into a LocalDate object using the formatter
             LocalDate date = LocalDate.parse(strDate, formatter); 
             // Additional check to validate the day, month, and year
@@ -61,7 +68,7 @@ public final class Validator {
      * @return True if the string represents a positive integer, false otherwise.
      */
     public static boolean validateNumber(String str) {
-        return validateRegexPattern("^[1-9]\\d*$", str);
+        return validateRegexPattern(REGEX_DIGIT, str);
     }
     
     /**
@@ -71,7 +78,7 @@ public final class Validator {
      * @return True if the string represents a positive double, false otherwise.
      */
     public static boolean validatePositiveDouble(String str) {
-        return validateRegexPattern("[0-9]{1,13}(\\\\.[0-9]*)?", str);
+        return validateRegexPattern(REGEX_POSITIVE_DECIMAL, str);
     }
     
     /**
@@ -81,7 +88,7 @@ public final class Validator {
      * @return True if the string represents a valid flower ID, false otherwise.
      */
     public static boolean validateFlowerID(String str) {
-        return validateRegexPattern("^\\d{4}$", str);
+        return validateRegexPattern(REGEX_ID, str);
     }
     
     /**
@@ -91,7 +98,7 @@ public final class Validator {
      * @return True if the string represents a valid description, false otherwise.
      */
     public static boolean validateDescription(String str) {
-        return validateRegexPattern("^.{3,50}$", str);
+        return validateRegexPattern(REGEX_DESCRIPTION, str);
     }
     
     /**
@@ -101,6 +108,6 @@ public final class Validator {
      * @return True if the string represents a valid order ID, false otherwise.
      */
     public static boolean validateOrderID(String str) {
-        return validateRegexPattern("^\\d{4}$", str);
+        return validateRegexPattern(REGEX_ID, str);
     }
 }

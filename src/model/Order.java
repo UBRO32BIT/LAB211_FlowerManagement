@@ -19,6 +19,7 @@ public class Order implements Serializable {
     private LocalDate orderDate;
     private String customerName;
     private HashSet<OrderDetail> orderDetails;
+    //Contructor
     public Order(String orderID, LocalDate orderDate, String customerName, HashSet<OrderDetail> orderDetails) {
         this.id = orderID;
         this.orderDate = orderDate;
@@ -78,10 +79,12 @@ public class Order implements Serializable {
     public int getOrderDetailsCount() {
         return orderDetails.size();
     }
+    // Override hashCode() method for consistent hashing
     @Override
     public int hashCode() {
         return id.hashCode();
     }
+    // Override equals() method to compare objects based on their IDs
     @Override
     public boolean equals(Object obj) {
         if (obj == null || getClass() != obj.getClass()) {

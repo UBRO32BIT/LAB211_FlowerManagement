@@ -162,6 +162,7 @@ public class FlowerManagement {
             isValid = false;
             log.printErr("The flower has already existed in an order detail!");
         }
+        //If the query is valid, delete the flower
         if (isValid) {
             flowers.removeByID(flowerID);
             log.printInfo("Delete flower successfully!");
@@ -244,6 +245,7 @@ public class FlowerManagement {
      * @param endDate The end date of the range.
      */
     public void displayOrders(LocalDate startDate, LocalDate endDate) {
+        // Filter 
         OrderSet filteredOrders = orders.filterByDate(startDate, endDate);
         LinkedHashMap<Integer, Order> result = new LinkedHashMap<>();
         int count = 1;
